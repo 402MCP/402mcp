@@ -230,7 +230,7 @@ export default function RootLayout({
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-x-12 gap-y-6 text-sm sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-x-12 gap-y-6 text-sm sm:grid-cols-4">
                 <div className="space-y-1.5">
                   <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                     Registry
@@ -272,6 +272,20 @@ export default function RootLayout({
                   <a href="/api/v1/mcp" className="link block">
                     MCP server
                   </a>
+                </div>
+                <div className="space-y-1.5">
+                  <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                    About
+                  </p>
+                  <Link href="/support" className="link block">
+                    Support
+                  </Link>
+                  <Link href="/privacy" className="link block">
+                    Privacy
+                  </Link>
+                  <Link href="/terms" className="link block">
+                    Terms
+                  </Link>
                 </div>
               </div>
             </div>

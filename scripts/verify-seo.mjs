@@ -228,10 +228,9 @@ section("Agent discovery documents");
   check("skill digest matches the served SKILL.md bytes",
     skills.skills[0].digest === `sha256:${createHash("sha256").update(skillMd).digest("hex")}`);
 
-  // No security.txt: RFC 9116 requires a `Contact` field, and this site
-  // publishes no contact address, so the file is omitted rather than invalid.
+  // security.txt is not published; security reports go to the address on /support.
   const sec = await fetch(`${base}/.well-known/security.txt`);
-  check("/.well-known/security.txt is absent, not serving a dead contact",
+  check("/.well-known/security.txt is not served",
     sec.status === 404, `got ${sec.status}`);
 }
 

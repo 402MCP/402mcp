@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
 import { REGISTRY_UPDATED, SITE_URL, rankedSolutions } from "@/data/solutions";
+import { POLICIES_UPDATED } from "@/lib/legal";
 
 /**
  * `lastmod` is the registry's own change date, not build time. A timestamp that
@@ -29,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.6,
     },
+    ...["/support", "/privacy", "/terms"].map((path) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified: POLICIES_UPDATED,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
     // Plain-text indexes are first-class content here, not build artifacts.
     {
       url: `${SITE_URL}/llms.txt`,

@@ -1,3 +1,4 @@
+import { SUPPORT_EMAIL } from "@/lib/legal";
 import { TOOL_SUMMARIES } from "@/lib/mcp/static";
 import {
   PROTOCOL_VERSION,
@@ -26,7 +27,8 @@ export async function GET() {
         name: "CC BY 4.0",
         url: "https://creativecommons.org/licenses/by/4.0/",
       },
-      contact: { name: "402MCP.org", url: SITE_URL },
+      contact: { name: "402MCP.org", url: `${SITE_URL}/support`, email: SUPPORT_EMAIL },
+      termsOfService: `${SITE_URL}/terms`,
     },
     servers: [{ url: SITE_URL }],
     externalDocs: { url: `${SITE_URL}/docs`, description: "Integration guides" },
