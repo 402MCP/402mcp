@@ -94,7 +94,8 @@ export default function TermsPage() {
 
       <PolicySection id="liability" title="Limitation of liability">
         <p>
-          To the fullest extent permitted by law, 402MCP.org is not liable for any indirect,
+          To the fullest extent permitted by law,{" "}
+          {OPERATOR ? `402MCP.org and ${OPERATOR} are` : "402MCP.org is"} not liable for any indirect,
           incidental or consequential damages, or for any loss arising from payments made or not
           made, or decisions taken, on the basis of the service&rsquo;s output.
         </p>

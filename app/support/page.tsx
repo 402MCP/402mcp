@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PolicyPage, PolicySection } from "@/components/PolicyPage";
 import { NPM_PACKAGE } from "@/lib/version";
-import { SUPPORT_EMAIL } from "@/lib/legal";
+import { OPERATOR, SUPPORT_EMAIL } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Support",
@@ -94,6 +94,7 @@ export default function SupportPage() {
         <p>
           402MCP.org is not affiliated with, sponsored by, or compensated by any vendor it indexes,
           and listing position cannot be purchased.
+          {OPERATOR ? ` 402MCP.org is operated by ${OPERATOR}.` : null}
         </p>
       </PolicySection>
     </PolicyPage>

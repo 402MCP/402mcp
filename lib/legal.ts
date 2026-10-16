@@ -10,7 +10,7 @@ export const POLICIES_UPDATED = "2026-10-16";
  * Legal entity that operates the site, or null to name the site alone. When
  * set, the policies say "402MCP.org is operated by <OPERATOR>".
  */
-export const OPERATOR: string | null = null;
+export const OPERATOR: string | null = "Blokhaus Inc";
 
 /** Formats a YYYY-MM-DD date as "16 October 2026". */
 export function formatPolicyDate(date: string): string {
