@@ -3,6 +3,9 @@
 /** Public support address. Also the contact for privacy requests and security reports. */
 export const SUPPORT_EMAIL = "support@402mcp.org";
 
+/** RFC 9116 `Expires` for security.txt. Renew before it passes (at most a year ahead). */
+export const SECURITY_TXT_EXPIRES = "2027-10-16T00:00:00.000Z";
+
 /** Date the privacy policy and terms last changed, as YYYY-MM-DD. */
 export const POLICIES_UPDATED = "2026-10-16";
 

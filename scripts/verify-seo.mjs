@@ -228,10 +228,17 @@ section("Agent discovery documents");
   check("skill digest matches the served SKILL.md bytes",
     skills.skills[0].digest === `sha256:${createHash("sha256").update(skillMd).digest("hex")}`);
 
-  // security.txt is not published; security reports go to the address on /support.
+  // RFC 9116: Contact and Expires are required; a lapsed Expires invalidates the file.
   const sec = await fetch(`${base}/.well-known/security.txt`);
-  check("/.well-known/security.txt is not served",
-    sec.status === 404, `got ${sec.status}`);
+  const secTxt = await sec.text();
+  const expires = Date.parse(secTxt.match(/^Expires: (.+)$/m)?.[1] ?? "");
+  check("/.well-known/security.txt is served as text/plain",
+    sec.status === 200 && (sec.headers.get("content-type") ?? "").startsWith("text/plain"), `got ${sec.status}`);
+  check("security.txt has a mailto Contact", /^Contact: mailto:\S+@\S+$/m.test(secTxt));
+  check("security.txt Expires is more than 30 days away",
+    expires - Date.now() > 30 * 24 * 3600 * 1000, secTxt.match(/^Expires: (.+)$/m)?.[1] ?? "missing");
+  check("security.txt Canonical points at itself",
+    secTxt.includes("Canonical: https://402mcp.org/.well-known/security.txt"));
 }
 
 /* --------------------------------------------------------------- IndexNow */
