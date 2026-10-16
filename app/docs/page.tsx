@@ -160,7 +160,9 @@ export default function DocsPage() {
               description:
                 "How HTTP 402 payments work, how L402, x402 and MPP differ, how to decode a 402 response, and how to integrate any of the indexed solutions.",
               url: `${SITE_URL}/docs`,
-              dateModified: REGISTRY_UPDATED,
+              image: `${SITE_URL}/docs/opengraph-image`,
+              // Google's Article checks want a full datetime with a timezone.
+              dateModified: `${REGISTRY_UPDATED}T00:00:00Z`,
               author: { "@id": ORGANIZATION_ID },
               publisher: { "@id": ORGANIZATION_ID },
               inLanguage: "en",
