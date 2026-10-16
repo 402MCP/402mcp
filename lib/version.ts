@@ -1,5 +1,5 @@
 /** Version of the 402MCP MCP server and the `402mcp` npm package. Kept in lockstep. */
-export const SERVER_VERSION = "1.1.0";
+export const SERVER_VERSION = "1.1.1";
 
 /** Latest MCP protocol revision this server speaks. Tracks the SDK's LATEST_PROTOCOL_VERSION. */
 export const MCP_PROTOCOL_VERSION = "2025-11-25";

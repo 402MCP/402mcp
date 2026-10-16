@@ -1,10 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "org.402mcp/registry",
-  "title": "402MCP.org \u2014 HTTP 402 & Agent Payment Registry",
+  "title": "402MCP.org — HTTP 402 & Agent Payment Registry",
   "description": "Decode HTTP 402 challenges (L402, x402, MPP) and choose agent payment rails from an open registry.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "websiteUrl": "https://402mcp.org",
+  "repository": {
+    "url": "https://github.com/402MCP/402mcp",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
@@ -15,7 +19,7 @@
     {
       "registryType": "npm",
       "identifier": "@402mcp/mcp",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "transport": {
         "type": "stdio"
       },
