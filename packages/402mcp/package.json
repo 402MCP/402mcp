@@ -1,0 +1,37 @@
+{
+  "name": "@402mcp/mcp",
+  "version": "1.1.0",
+  "description": "MCP server for HTTP 402 agent payments: decode L402, x402 and MPP challenges, choose a payment rail from requirements, and search an independent registry.",
+  "mcpName": "org.402mcp/registry",
+  "type": "module",
+  "bin": {
+    "402mcp": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.17"
+  },
+  "license": "MIT",
+  "author": "402MCP.org",
+  "homepage": "https://402mcp.org",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "http-402",
+    "payment-required",
+    "l402",
+    "x402",
+    "mpp",
+    "machine-payments",
+    "lightning",
+    "agent-payments",
+    "ai-agents"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

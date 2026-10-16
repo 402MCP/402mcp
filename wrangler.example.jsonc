@@ -1,0 +1,46 @@
+// Copy to wrangler.jsonc and fill in your own values to deploy the site as a
+// Cloudflare Worker. wrangler.jsonc is gitignored.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "<worker-name>",
+  // Custom entry wrapping OpenNext's generated worker to add the scheduled
+  // liveness job. See worker.ts.
+  "main": "worker.ts",
+  "compatibility_date": "2026-09-21",
+  // nodejs_compat: required by the OpenNext adapter. The Worker still runs in
+  // every Cloudflare location — "Node runtime" means the API surface.
+  // global_fetch_strictly_public: outbound fetch() can reach only the public
+  // internet, so the URL probe cannot be pointed at internal addresses.
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+
+  // Latest liveness snapshot, written daily by the scheduled handler.
+  // Create with: npx wrangler kv namespace create LIVENESS
+  "kv_namespaces": [
+    { "binding": "LIVENESS", "id": "<kv-namespace-id>" }
+  ],
+
+  // The hosted probe fetches arbitrary public URLs; cap it per client.
+  // namespace_id is any positive integer unique within your account.
+  "ratelimits": [
+    { "name": "PROBE_LIMITER", "namespace_id": "<integer>", "simple": { "limit": 10, "period": 60 } }
+  ],
+
+  // Daily at 06:17 UTC — check every entry's docs and website.
+  "triggers": { "crons": ["17 6 * * *"] },
+
+  "workers_dev": true,
+  "preview_urls": false,
+
+  // Optional custom domains. Cloudflare creates and owns the DNS record for
+  // each one, so no A/CNAME may already exist at these hostnames.
+  // "routes": [
+  //   { "pattern": "example.org", "custom_domain": true }
+  // ],
+  "observability": {
+    "enabled": true
+  }
+}

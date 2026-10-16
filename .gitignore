@@ -1,0 +1,21 @@
+node_modules/
+.next/
+.open-next/
+.vercel/
+.wrangler/
+out/
+build/
+.DS_Store
+*.pem
+.env*
+!.env.example
+next-env.d.ts
+tsconfig.tsbuildinfo
+.mcpb-build/
+.test-build/
+packages/402mcp/dist/
+public/downloads/
+.claude/
+
+# Deployment config holds account-specific IDs; see wrangler.example.jsonc.
+wrangler.jsonc
